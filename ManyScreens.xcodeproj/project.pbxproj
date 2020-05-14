@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		081C22992469AE3300EAF652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22982469AE3300EAF652 /* AppDelegate.swift */; };
-		081C229B2469AE3300EAF652 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C229A2469AE3300EAF652 /* ViewController.swift */; };
 		081C229E2469AE3300EAF652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081C229C2469AE3300EAF652 /* Main.storyboard */; };
 		081C22A02469AE3400EAF652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 081C229F2469AE3400EAF652 /* Assets.xcassets */; };
 		081C22A32469AE3400EAF652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081C22A12469AE3400EAF652 /* LaunchScreen.storyboard */; };
 		081C22AE2469AE3400EAF652 /* ManyScreensTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22AD2469AE3400EAF652 /* ManyScreensTests.swift */; };
 		081C22B92469AE3400EAF652 /* ManyScreensUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22B82469AE3400EAF652 /* ManyScreensUITests.swift */; };
+		081C22C72469B4B200EAF652 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22C62469B4B200EAF652 /* DetailsViewController.swift */; };
+		081C22CF2469B9F600EAF652 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22CE2469B9F600EAF652 /* PersonTableViewCell.swift */; };
+		081C22D12469C77900EAF652 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D02469C77900EAF652 /* Person.swift */; };
+		081C22D32469D55700EAF652 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D22469D55700EAF652 /* PersonTableViewController.swift */; };
+		08283274246B3056004C1D28 /* AboutPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08283273246B3056004C1D28 /* AboutPopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,6 @@
 /* Begin PBXFileReference section */
 		081C22952469AE3300EAF652 /* ManyScreens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManyScreens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		081C22982469AE3300EAF652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		081C229A2469AE3300EAF652 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		081C229D2469AE3300EAF652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		081C229F2469AE3400EAF652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		081C22A22469AE3400EAF652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,11 @@
 		081C22B42469AE3400EAF652 /* ManyScreensUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManyScreensUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		081C22B82469AE3400EAF652 /* ManyScreensUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManyScreensUITests.swift; sourceTree = "<group>"; };
 		081C22BA2469AE3400EAF652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		081C22C62469B4B200EAF652 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		081C22CE2469B9F600EAF652 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		081C22D02469C77900EAF652 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		081C22D22469D55700EAF652 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
+		08283273246B3056004C1D28 /* AboutPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				081C22982469AE3300EAF652 /* AppDelegate.swift */,
-				081C229A2469AE3300EAF652 /* ViewController.swift */,
 				081C229C2469AE3300EAF652 /* Main.storyboard */,
+				08283273246B3056004C1D28 /* AboutPopupViewController.swift */,
+				081C22D22469D55700EAF652 /* PersonTableViewController.swift */,
+				081C22D02469C77900EAF652 /* Person.swift */,
+				081C22C62469B4B200EAF652 /* DetailsViewController.swift */,
 				081C229F2469AE3400EAF652 /* Assets.xcassets */,
 				081C22A12469AE3400EAF652 /* LaunchScreen.storyboard */,
 				081C22A42469AE3400EAF652 /* Info.plist */,
+				081C22CE2469B9F600EAF652 /* PersonTableViewCell.swift */,
 			);
 			path = ManyScreens;
 			sourceTree = "<group>";
@@ -256,8 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				081C229B2469AE3300EAF652 /* ViewController.swift in Sources */,
+				081C22D12469C77900EAF652 /* Person.swift in Sources */,
+				081C22D32469D55700EAF652 /* PersonTableViewController.swift in Sources */,
 				081C22992469AE3300EAF652 /* AppDelegate.swift in Sources */,
+				08283274246B3056004C1D28 /* AboutPopupViewController.swift in Sources */,
+				081C22CF2469B9F600EAF652 /* PersonTableViewCell.swift in Sources */,
+				081C22C72469B4B200EAF652 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
