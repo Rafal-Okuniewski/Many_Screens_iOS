@@ -17,7 +17,12 @@ class PersonTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
         tableView.tableFooterView = UIView()
-        loadSampleData()
+        // Load any saved people, otherwise load sample data.
+        if let savedPeople = loadPeople() {
+            people += savedPeople
+        }        else{
+            loadSampleData()
+        }
     }
 
     // MARK: - Table view data source
@@ -54,6 +59,7 @@ class PersonTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             people.remove(at: indexPath.row)
+            savePeople()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -118,6 +124,7 @@ class PersonTableViewController: UITableViewController {
                 people.append(person)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            savePeople()
         }
     }
     
@@ -130,19 +137,32 @@ class PersonTableViewController: UITableViewController {
         formatter.dateFormat = "yyyy/MM/dd"
         
         guard let person1 = Person(name: "Oliver", surname: "Smith", birth: formatter.date(from: "1977/11/03") ?? Date.init(), photo: photo1) else {
-            fatalError("Unable to create person1")
+            fatalError("Unable to create person 1")
         }
         
         guard let person2 = Person(name: "Jack", surname: "Williams", birth: formatter.date(from: "1990/01/20") ?? Date.init(), photo: photo2) else {
-            fatalError("Unable to create person2")
+            fatalError("Unable to create person 2")
         }
         
         guard let person3 = Person(name: "Amelia", surname: "Jones", birth: formatter.date(from: "1985/06/17") ?? Date.init(), photo: photo3) else {
-            fatalError("Unable to create person3")
+            fatalError("Unable to create person 3")
         }
 
         people += [person1, person2, person3]
+    }
+    
+    private func savePeople() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(people, toFile: Person.ArchiveURL.path)
         
+        if isSuccessfulSave {
+            os_log("People successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save people...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadPeople() -> [Person]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Person.ArchiveURL.path) as? [Person]
     }
     
 }
