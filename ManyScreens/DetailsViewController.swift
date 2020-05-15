@@ -11,6 +11,7 @@ import os.log
 
 class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    @IBOutlet weak var btnOk: UIButton!
     @IBOutlet weak var btnSave: UIBarButtonItem!
     @IBOutlet weak var imgViewAddPhoto: UIImageView!
     @IBOutlet weak var txtName: UITextField!
@@ -80,7 +81,7 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        guard let button = sender as? UIBarButtonItem, button === btnSave else {
+        guard let button = sender as? UIButton, button === btnOk else {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
