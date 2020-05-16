@@ -23,6 +23,22 @@ class PersonTableViewController: UITableViewController {
         }        else{
             loadSampleData()
         }
+        UserDefaults.standard.register(defaults: [String:Any]())
+        userSettings()
+    }
+    
+    private func userSettings(){
+        let userDefaults = UserDefaults.standard
+        let userName = userDefaults.string(forKey: "user_name")
+        let userSurname = userDefaults.string(forKey: "user_surname")
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: date)
+        let alertController = UIAlertController(title: "Welcome", message: "Hello " + userName! + " " + userSurname! + " today is " + dayInWeek + ".", preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "OK",style: .default,handler: nil)
+        alertController.addAction(actionOk)
+        self.present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -44,6 +60,10 @@ class PersonTableViewController: UITableViewController {
         
         cell.labFullname.text = person.name + " " + person.surname
         cell.imgViewPhoto.image = person.photo
+        
+        let appDefaults = UserDefaults.standard
+        let appFont = appDefaults.float(forKey: "app_font_size")
+        cell.labFullname.font = cell.labFullname.font.withSize(CGFloat(appFont))
 
         return cell
     }

@@ -210,7 +210,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxa-6t-ACm">
-                                        <rect key="frame" x="20" y="20" width="260" height="122"/>
+                                        <rect key="frame" x="10" y="10" width="280" height="117"/>
                                         <string key="text">This is a student test application for programming classes. It serves only for the purpose of learning the programming language - 'Swift' and the integrated development environment XCode.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -221,14 +221,21 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="3aE-Fh-quT"/>
                                     <constraint firstItem="lPp-sC-RI7" firstAttribute="bottom" secondItem="uqf-7D-FGz" secondAttribute="bottomMargin" id="IdS-DO-lLo"/>
-                                    <constraint firstItem="Mxa-6t-ACm" firstAttribute="leading" secondItem="uqf-7D-FGz" secondAttribute="leading" constant="20" id="V6A-BO-vd5"/>
-                                    <constraint firstItem="Mxa-6t-ACm" firstAttribute="top" secondItem="uqf-7D-FGz" secondAttribute="top" constant="20" id="WgB-5P-HKZ"/>
+                                    <constraint firstItem="Mxa-6t-ACm" firstAttribute="leading" secondItem="uqf-7D-FGz" secondAttribute="leading" constant="10" id="V6A-BO-vd5"/>
+                                    <constraint firstItem="Mxa-6t-ACm" firstAttribute="top" secondItem="uqf-7D-FGz" secondAttribute="top" constant="10" id="WgB-5P-HKZ"/>
                                     <constraint firstAttribute="width" constant="300" id="ktf-yw-cMa"/>
-                                    <constraint firstItem="lPp-sC-RI7" firstAttribute="top" secondItem="Mxa-6t-ACm" secondAttribute="bottom" constant="20" id="qoK-Ud-v7e"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mxa-6t-ACm" secondAttribute="trailing" constant="20" id="xcU-VG-KT9"/>
+                                    <constraint firstItem="lPp-sC-RI7" firstAttribute="top" secondItem="Mxa-6t-ACm" secondAttribute="bottom" constant="35" id="qoK-Ud-v7e"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mxa-6t-ACm" secondAttribute="trailing" constant="10" id="xcU-VG-KT9"/>
                                     <constraint firstItem="lPp-sC-RI7" firstAttribute="centerX" secondItem="uqf-7D-FGz" secondAttribute="centerX" id="zEV-NJ-rGy"/>
                                 </constraints>
                             </view>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="54Y-tY-ELv">
+                                <rect key="frame" x="116" y="472" width="182" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderOpacity:" destination="9QJ-kA-h9a" eventType="valueChanged" id="KMH-3P-FgO"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.077720207253886064" green="0.077720207253886064" blue="0.077720207253886064" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -237,6 +244,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a4S-VS-GIM"/>
                     </view>
+                    <connections>
+                        <outlet property="sliderOpacity" destination="54Y-tY-ELv" id="q8c-vl-ntq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zt0-wx-ONL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

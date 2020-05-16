@@ -18,6 +18,7 @@
 		081C22D12469C77900EAF652 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D02469C77900EAF652 /* Person.swift */; };
 		081C22D32469D55700EAF652 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D22469D55700EAF652 /* PersonTableViewController.swift */; };
 		08283274246B3056004C1D28 /* AboutPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08283273246B3056004C1D28 /* AboutPopupViewController.swift */; };
+		08E8D4FC246F034300655681 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08E8D4FB246F034300655681 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		081C22D02469C77900EAF652 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		081C22D22469D55700EAF652 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		08283273246B3056004C1D28 /* AboutPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPopupViewController.swift; sourceTree = "<group>"; };
+		08E8D4FB246F034300655681 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				081C22A12469AE3400EAF652 /* LaunchScreen.storyboard */,
 				081C22A42469AE3400EAF652 /* Info.plist */,
 				081C22CE2469B9F600EAF652 /* PersonTableViewCell.swift */,
+				08E8D4FB246F034300655681 /* Settings.bundle */,
 			);
 			path = ManyScreens;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08E8D4FC246F034300655681 /* Settings.bundle in Resources */,
 				081C22A32469AE3400EAF652 /* LaunchScreen.storyboard in Resources */,
 				081C22A02469AE3400EAF652 /* Assets.xcassets in Resources */,
 				081C229E2469AE3300EAF652 /* Main.storyboard in Resources */,
