@@ -20,7 +20,7 @@ class PersonTableViewController: UITableViewController {
         // Load any saved people, otherwise load sample data.
         if let savedPeople = loadPeople() {
             people += savedPeople
-        }        else{
+        } else {
             loadSampleData()
         }
         UserDefaults.standard.register(defaults: [String:Any]())
