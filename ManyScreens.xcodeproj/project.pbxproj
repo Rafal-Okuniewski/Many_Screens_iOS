@@ -18,6 +18,8 @@
 		081C22D12469C77900EAF652 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D02469C77900EAF652 /* Person.swift */; };
 		081C22D32469D55700EAF652 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D22469D55700EAF652 /* PersonTableViewController.swift */; };
 		08283274246B3056004C1D28 /* AboutPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08283273246B3056004C1D28 /* AboutPopupViewController.swift */; };
+		08304A5D247C2CCF00B05C53 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08304A5C247C2CCF00B05C53 /* PersistentContainer.swift */; };
+		08DB77A32479693D003591E9 /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08DB77A12479693D003591E9 /* Person.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		081C22D02469C77900EAF652 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		081C22D22469D55700EAF652 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
 		08283273246B3056004C1D28 /* AboutPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPopupViewController.swift; sourceTree = "<group>"; };
+		08304A5C247C2CCF00B05C53 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		08DB77A22479693D003591E9 /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +111,10 @@
 			children = (
 				081C22982469AE3300EAF652 /* AppDelegate.swift */,
 				081C229C2469AE3300EAF652 /* Main.storyboard */,
+				08DB77A12479693D003591E9 /* Person.xcdatamodeld */,
 				08283273246B3056004C1D28 /* AboutPopupViewController.swift */,
 				081C22D22469D55700EAF652 /* PersonTableViewController.swift */,
+				08304A5C247C2CCF00B05C53 /* PersistentContainer.swift */,
 				081C22D02469C77900EAF652 /* Person.swift */,
 				081C22C62469B4B200EAF652 /* DetailsViewController.swift */,
 				081C229F2469AE3400EAF652 /* Assets.xcassets */,
@@ -268,7 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08304A5D247C2CCF00B05C53 /* PersistentContainer.swift in Sources */,
 				081C22D12469C77900EAF652 /* Person.swift in Sources */,
+				08DB77A32479693D003591E9 /* Person.xcdatamodeld in Sources */,
 				081C22D32469D55700EAF652 /* PersonTableViewController.swift in Sources */,
 				081C22992469AE3300EAF652 /* AppDelegate.swift in Sources */,
 				08283274246B3056004C1D28 /* AboutPopupViewController.swift in Sources */,
@@ -596,6 +604,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		08DB77A12479693D003591E9 /* Person.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				08DB77A22479693D003591E9 /* Person.xcdatamodel */,
+			);
+			currentVersion = 08DB77A22479693D003591E9 /* Person.xcdatamodel */;
+			path = Person.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 081C228D2469AE3300EAF652 /* Project object */;
 }

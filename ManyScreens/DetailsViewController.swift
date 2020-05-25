@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import CoreData
 
 class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
@@ -19,10 +20,13 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var picBirth: UIDatePicker!
     
     var person: Person?
+    var container: NSPersistentContainer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       // guard container != nil else {
+        //    fatalError("This view needs a persistent container.")
+        //}
         if let person = person {
             txtName.text = person.name
             txtSurname.text = person.surname

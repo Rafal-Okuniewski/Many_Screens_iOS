@@ -8,25 +8,40 @@
 
 import UIKit
 import os.log
+import CoreData
 
 class PersonTableViewController: UITableViewController {
+    
+    struct Section{
+        let letter : String
+        let names: [String]
+    }
 
     var people = [Person]()
+    var sections = [Section]()
+    var container: NSPersistentContainer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
         tableView.tableFooterView = UIView()
         loadSampleData()
+        //guard container != nil else {
+        //    fatalError("This view needs a persistent container.")
+       /// }
+        let groupedDictionary = Dictionary(grouping: people.map({$0.surname}), by: {String($0.prefix(1))})
+        let keys = groupedDictionary.keys.sorted()
+        sections = keys.map{Section(letter: $0, names: groupedDictionary[$0]!.sorted())}
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return people.count
+        return sections[section].names.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,10 +50,11 @@ class PersonTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of PersonTableViewCell")
         }
         
-        let person = people[indexPath.row]
+        let person = people[indexPath.section]
         
         cell.labFullname.text = person.name + " " + person.surname
         cell.imgViewPhoto.image = person.photo
+        cell.accessoryType = .disclosureIndicator
 
         return cell
     }
@@ -60,6 +76,19 @@ class PersonTableViewController: UITableViewController {
         }    
     }
 
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sections.map{$0.letter}
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int ) -> String? {
+       return sections[section].letter
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int ) -> String? {
+        return "End of letter: " + sections[section].letter
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -78,6 +107,9 @@ class PersonTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        if let nextVC = segue.destination as? DetailsViewController {
+            nextVC.container = container
+        }
         switch(segue.identifier ?? "") {
         case "AddItem":
             os_log("Adding a new person.", log: OSLog.default, type: .debug)
@@ -142,7 +174,7 @@ class PersonTableViewController: UITableViewController {
         }
 
         people += [person1, person2, person3]
-        
+        people.sort(by: {$0.surname < $1.surname})
     }
     
 }
