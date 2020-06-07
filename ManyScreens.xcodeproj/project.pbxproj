@@ -15,8 +15,9 @@
 		081C22B92469AE3400EAF652 /* ManyScreensUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22B82469AE3400EAF652 /* ManyScreensUITests.swift */; };
 		081C22C72469B4B200EAF652 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22C62469B4B200EAF652 /* DetailsViewController.swift */; };
 		081C22CF2469B9F600EAF652 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22CE2469B9F600EAF652 /* PersonTableViewCell.swift */; };
-		081C22D12469C77900EAF652 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D02469C77900EAF652 /* Person.swift */; };
 		081C22D32469D55700EAF652 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081C22D22469D55700EAF652 /* PersonTableViewController.swift */; };
+		08246B8E247D995400515D8A /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08246B8C247D995400515D8A /* Person+CoreDataClass.swift */; };
+		08246B8F247D995400515D8A /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08246B8D247D995400515D8A /* Person+CoreDataProperties.swift */; };
 		08283274246B3056004C1D28 /* AboutPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08283273246B3056004C1D28 /* AboutPopupViewController.swift */; };
 		08304A5D247C2CCF00B05C53 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08304A5C247C2CCF00B05C53 /* PersistentContainer.swift */; };
 		08DB77A32479693D003591E9 /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08DB77A12479693D003591E9 /* Person.xcdatamodeld */; };
@@ -54,8 +55,9 @@
 		081C22BA2469AE3400EAF652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		081C22C62469B4B200EAF652 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		081C22CE2469B9F600EAF652 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
-		081C22D02469C77900EAF652 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		081C22D22469D55700EAF652 /* PersonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewController.swift; sourceTree = "<group>"; };
+		08246B8C247D995400515D8A /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		08246B8D247D995400515D8A /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		08283273246B3056004C1D28 /* AboutPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPopupViewController.swift; sourceTree = "<group>"; };
 		08304A5C247C2CCF00B05C53 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		08DB77A22479693D003591E9 /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		081C228C2469AE3300EAF652 = {
 			isa = PBXGroup;
 			children = (
+				08246B8C247D995400515D8A /* Person+CoreDataClass.swift */,
+				08246B8D247D995400515D8A /* Person+CoreDataProperties.swift */,
 				081C22972469AE3300EAF652 /* ManyScreens */,
 				081C22AC2469AE3400EAF652 /* ManyScreensTests */,
 				081C22B72469AE3400EAF652 /* ManyScreensUITests */,
@@ -115,7 +119,6 @@
 				08283273246B3056004C1D28 /* AboutPopupViewController.swift */,
 				081C22D22469D55700EAF652 /* PersonTableViewController.swift */,
 				08304A5C247C2CCF00B05C53 /* PersistentContainer.swift */,
-				081C22D02469C77900EAF652 /* Person.swift */,
 				081C22C62469B4B200EAF652 /* DetailsViewController.swift */,
 				081C229F2469AE3400EAF652 /* Assets.xcassets */,
 				081C22A12469AE3400EAF652 /* LaunchScreen.storyboard */,
@@ -275,10 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				08304A5D247C2CCF00B05C53 /* PersistentContainer.swift in Sources */,
-				081C22D12469C77900EAF652 /* Person.swift in Sources */,
 				08DB77A32479693D003591E9 /* Person.xcdatamodeld in Sources */,
 				081C22D32469D55700EAF652 /* PersonTableViewController.swift in Sources */,
 				081C22992469AE3300EAF652 /* AppDelegate.swift in Sources */,
+				08246B8E247D995400515D8A /* Person+CoreDataClass.swift in Sources */,
+				08246B8F247D995400515D8A /* Person+CoreDataProperties.swift in Sources */,
 				08283274246B3056004C1D28 /* AboutPopupViewController.swift in Sources */,
 				081C22CF2469B9F600EAF652 /* PersonTableViewCell.swift in Sources */,
 				081C22C72469B4B200EAF652 /* DetailsViewController.swift in Sources */,

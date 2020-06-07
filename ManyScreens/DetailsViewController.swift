@@ -20,18 +20,15 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var picBirth: UIDatePicker!
     
     var person: Person?
-    var container: NSPersistentContainer!
-    
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       // guard container != nil else {
-        //    fatalError("This view needs a persistent container.")
-        //}
         if let person = person {
             txtName.text = person.name
             txtSurname.text = person.surname
-            imgViewAddPhoto.image = person.photo
-            picBirth.date = person.birth
+            imgViewAddPhoto.image = UIImage(data:person.photo! as Data)
+            picBirth.date = person.birth as Date
         }
     }
 
@@ -90,12 +87,14 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             return
         }
         
-        let name = txtName.text ?? ""
-        let surname = txtSurname.text ?? ""
-        let birth = picBirth.date
-        let photo = imgViewAddPhoto.image
+        let newPerson = Person(context: self.context)
+        newPerson.name = txtName.text ?? ""
+        newPerson.surname = txtSurname.text ?? ""
+        newPerson.birth = picBirth.date as NSDate
+        newPerson.photo = imgViewAddPhoto.image?.pngData()! as! NSData
         
-        person = Person(name: name, surname: surname, birth: birth, photo: photo)
+        person = newPerson
+        
     }
-    
+
 }

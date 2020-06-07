@@ -9,6 +9,7 @@
 import UIKit
 import os.log
 import CoreData
+import CoreImage
 
 class PersonTableViewController: UITableViewController {
     
@@ -19,16 +20,13 @@ class PersonTableViewController: UITableViewController {
 
     var people = [Person]()
     var sections = [Section]()
-    var container: NSPersistentContainer!
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
         tableView.tableFooterView = UIView()
-        loadSampleData()
-        //guard container != nil else {
-        //    fatalError("This view needs a persistent container.")
-       /// }
+        loadData()
         let groupedDictionary = Dictionary(grouping: people.map({$0.surname}), by: {String($0.prefix(1))})
         let keys = groupedDictionary.keys.sorted()
         sections = keys.map{Section(letter: $0, names: groupedDictionary[$0]!.sorted())}
@@ -45,23 +43,20 @@ class PersonTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "PersonTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PersonTableViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PersonTableViewCell", for: indexPath) as? PersonTableViewCell else{
             fatalError("The dequeued cell is not an instance of PersonTableViewCell")
         }
         
-        let person = people[indexPath.section]
+        let person = people[indexPath.row]
         
         cell.labFullname.text = person.name + " " + person.surname
-        cell.imgViewPhoto.image = person.photo
+        cell.imgViewPhoto.image = UIImage(data:person.photo! as Data)
         cell.accessoryType = .disclosureIndicator
 
         return cell
     }
     
-    // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
     
@@ -69,8 +64,11 @@ class PersonTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            os_log("Deleted", log: OSLog.default, type: .debug)
             people.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            sections.remove(at: indexPath.row)
+            saveData()
+           // tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -89,27 +87,9 @@ class PersonTableViewController: UITableViewController {
         return "End of letter: " + sections[section].letter
     }
     
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        if let nextVC = segue.destination as? DetailsViewController {
-            nextVC.container = container
-        }
         switch(segue.identifier ?? "") {
         case "AddItem":
             os_log("Adding a new person.", log: OSLog.default, type: .debug)
@@ -143,38 +123,35 @@ class PersonTableViewController: UITableViewController {
                 // Update an existing person
                 people[selectedIndexPath.row] = person
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            }
-            else {
+            } else {
+                os_log("Adding a new person.", log: OSLog.default, type: .debug)
                 // Add a new person
                 let newIndexPath = IndexPath(row: people.count, section: 0)
-                people.append(person)
+                //let newPerson = Person(context: self.context)
+                self.people.append(person)
+                self.saveData()
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
     }
     
-    private func loadSampleData(){
-        let photo1 = UIImage(named: "avatar1")
-        let photo2 = UIImage(named: "avatar2")
-        let photo3 = UIImage(named: "avatar3")
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        
-        guard let person1 = Person(name: "Oliver", surname: "Smith", birth: formatter.date(from: "1977/11/03") ?? Date.init(), photo: photo1) else {
-            fatalError("Unable to create person1")
+    func loadData() {
+        let request: NSFetchRequest<Person> = Person.fetchRequest()
+        do {
+            people = try context.fetch(request)
+        } catch {
+            print("Error loading data \(error)")
         }
-        
-        guard let person2 = Person(name: "Jack", surname: "Williams", birth: formatter.date(from: "1990/01/20") ?? Date.init(), photo: photo2) else {
-            fatalError("Unable to create person2")
+        tableView.reloadData()
+    }
+    
+    func saveData() {
+        do {
+            os_log("Saved", log: OSLog.default, type: .debug)
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
-        
-        guard let person3 = Person(name: "Amelia", surname: "Jones", birth: formatter.date(from: "1985/06/17") ?? Date.init(), photo: photo3) else {
-            fatalError("Unable to create person3")
-        }
-
-        people += [person1, person2, person3]
-        people.sort(by: {$0.surname < $1.surname})
     }
     
 }
