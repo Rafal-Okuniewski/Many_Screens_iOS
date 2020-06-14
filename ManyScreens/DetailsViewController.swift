@@ -87,14 +87,19 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             return
         }
         
-        let newPerson = Person(context: self.context)
-        newPerson.name = txtName.text ?? ""
-        newPerson.surname = txtSurname.text ?? ""
-        newPerson.birth = picBirth.date as NSDate
-        newPerson.photo = imgViewAddPhoto.image?.pngData()! as! NSData
-        
-        person = newPerson
-        
+        if person != nil {
+            person!.name = txtName.text ?? ""
+            person!.surname = txtSurname.text ?? ""
+            person!.birth = picBirth.date as NSDate
+            person!.photo = imgViewAddPhoto.image?.pngData()! as NSData?
+        } else {
+            let newPerson = Person(context: self.context)
+            newPerson.name = txtName.text ?? ""
+            newPerson.surname = txtSurname.text ?? ""
+            newPerson.birth = picBirth.date as NSDate
+            newPerson.photo = imgViewAddPhoto.image?.pngData()! as NSData?
+            person = newPerson
+        }
     }
 
 }
