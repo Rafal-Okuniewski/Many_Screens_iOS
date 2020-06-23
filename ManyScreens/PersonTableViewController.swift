@@ -136,13 +136,13 @@ class PersonTableViewController: UITableViewController {
                     sections[sectionId].people.append(person)
                     people.append(person)
                     tableView.insertRows(at: [newIndexPath], with: .automatic)
-                } else {//TODO add new section HOW!?
+                } else {//TODO add new s
                     let newIndexPath = IndexPath(row: 0, section: sections.count)
                     var peopleConst = [Person]()
                     peopleConst.append(person)
                     sections.append(Section(letter: String(person.surname.prefix(1)), people: peopleConst))
                     people.append(person)
-                    tableView.insertSections(IndexSet(integersIn: 0...0), with: UITableView.RowAnimation.top)
+                    
                     tableView.insertRows(at: [newIndexPath], with: .automatic)
                 }
                 self.saveData()
